@@ -9,6 +9,9 @@
 .global get_pi
 .global get_e
 .global calculate_abs
+.global calculate_power
+.global calculate_nth_root
+.global calculate_natural_log
 
 .data
 pi_value: .double 3.14159265359
@@ -20,11 +23,9 @@ add_numbers:
     fadd d0, d0, d1  
     ret
 
-
 subtract_numbers:
     fsub d0, d0, d1  
     ret
-
 
 multiply_numbers:
     fmul d0, d0, d1  
@@ -33,7 +34,6 @@ multiply_numbers:
 divide_numbers:
     fdiv d0, d0, d1 
     ret
-
 
 calculate_sqrt:
     fsqrt d0, d0   
@@ -65,4 +65,28 @@ get_e:
 
 calculate_abs:
     fabs d0, d0
+    ret
+
+//new
+calculate_power:
+    //x0 = base, x1 = exponent
+    FMOV D0, X0       // Move base to D0
+    FMOV D1, X1       // Move exponent to D1
+    BL pow           
+    ret
+
+//new
+calculate_nth_root:
+    //x0 = number, x1 = root
+    FMOV D0, X0       // Move number to D0
+    FMOV D1, X1       // Move root to D1
+    FRECPE D1, D1     // Compute 1/root
+    BL pow            // Call pow(number, 1/root)
+    ret
+
+//new
+calculate_natural_log:
+    //x0 = number
+    FMOV D0, X0       // Move number to D0
+    BL log            
     ret
