@@ -12,6 +12,7 @@ extern double calculate_tangent(double x);
 extern double calculate_sqrt(double x);
 extern double get_pi(void);
 extern double get_e(void);
+extern double calculate_abs(double x);
 
 double parse_input(const char* input) {
     if (strcasecmp(input, "pi") == 0) {
@@ -32,8 +33,8 @@ int main() {
 
     printf("Scientific Calculator\n");
     printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
-    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n");
-    printf("Enter your choice (1-8): ");
+    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n9. Absolute Value\n");
+    printf("Enter your choice (1-9): ");
     scanf("%d", &choice);
     getchar();  // Consume newline
 
@@ -57,7 +58,7 @@ int main() {
             break;
         }
     }
-    else if (choice >= 5 && choice <= 8) {
+    else if (choice >= 5 && choice <= 9) {
         printf("Enter a number: ");
         scanf("%s", input1);
         
@@ -74,6 +75,7 @@ int main() {
             }
             result = calculate_sqrt(num1);
             break;
+        case 9: result = calculate_abs(num1); break;
         }
     }
     else {

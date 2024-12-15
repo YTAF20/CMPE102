@@ -8,6 +8,7 @@
 .global calculate_sqrt
 .global get_pi
 .global get_e
+.global calculate_abs
 
 .data
 pi_value: .double 3.14159265359
@@ -60,4 +61,8 @@ get_e:
     adrp x8, e_value
     add x8, x8, :lo12:e_value
     ldr d0, [x8]
+    ret
+
+calculate_abs:
+    fabs d0, d0
     ret
