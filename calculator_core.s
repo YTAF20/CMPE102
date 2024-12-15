@@ -7,9 +7,11 @@
 .global calculate_tangent
 .global calculate_sqrt
 .global get_pi
+.global get_e
 
 .data
 pi_value: .double 3.14159265359
+e_value: .double 2.71828182846
 
 .text
 
@@ -51,5 +53,11 @@ calculate_tangent:
 get_pi:
     adrp x8, pi_value
     add x8, x8, :lo12:pi_value
+    ldr d0, [x8]
+    ret
+
+get_e:
+    adrp x8, e_value
+    add x8, x8, :lo12:e_value
     ldr d0, [x8]
     ret

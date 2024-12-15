@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+#include <string.h>
 
 extern double add_numbers(double a, double b);
 extern double subtract_numbers(double a, double b);
@@ -10,9 +10,25 @@ extern double calculate_sine(double x);
 extern double calculate_cosine(double x);
 extern double calculate_tangent(double x);
 extern double calculate_sqrt(double x);
+extern double get_pi(void);
+extern double get_e(void);
+
+// Function to parse input and handle pi/e constants
+double parse_input(const char* input) {
+    if (strcasecmp(input, "pi") == 0) {
+        return get_pi();
+    } else if (strcasecmp(input, "e") == 0) {
+        return get_e();
+    }
+    
+    double value;
+    sscanf(input, "%lf", &value);
+    return value;
+}
 
 int main() {
     int choice;
+    char input1[20], input2[20];
     double num1, num2, result;
 
     printf("Scientific Calculator\n");
@@ -20,10 +36,14 @@ int main() {
     printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n");
     printf("Enter your choice (1-8): ");
     scanf("%d", &choice);
+    getchar();  // Consume newline
 
     if (choice >= 1 && choice <= 4) {
         printf("Enter two numbers: ");
-        scanf("%lf %lf", &num1, &num2);
+        scanf("%s %s", input1, input2);
+        
+        num1 = parse_input(input1);
+        num2 = parse_input(input2);
 
         switch (choice) {
         case 1: result = add_numbers(num1, num2); break;
@@ -40,7 +60,9 @@ int main() {
     }
     else if (choice >= 5 && choice <= 8) {
         printf("Enter a number: ");
-        scanf("%lf", &num1);
+        scanf("%s", input1);
+        
+        num1 = parse_input(input1);
 
         switch (choice) {
         case 5: result = calculate_sine(num1); break;
