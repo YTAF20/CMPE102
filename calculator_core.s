@@ -6,6 +6,10 @@
 .global calculate_cosine
 .global calculate_tangent
 .global calculate_sqrt
+.global get_pi
+
+.data
+pi_value: .double 3.14159265359
 
 .text
 
@@ -42,4 +46,10 @@ calculate_cosine:
 
 calculate_tangent:
     bl tan
+    ret
+
+get_pi:
+    adrp x8, pi_value
+    add x8, x8, :lo12:pi_value
+    ldr d0, [x8]
     ret
