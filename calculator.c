@@ -13,7 +13,6 @@ extern double calculate_sqrt(double x);
 extern double get_pi(void);
 extern double get_e(void);
 
-// Function to parse input and handle pi/e constants
 double parse_input(const char* input) {
     if (strcasecmp(input, "pi") == 0) {
         return get_pi();
