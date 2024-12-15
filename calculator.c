@@ -14,7 +14,6 @@ extern double get_pi(void);
 extern double get_e(void);
 extern double calculate_abs(double x);
 
-//new
 extern double calculate_power(double base, double exponent);
 extern double calculate_nth_root(double number, double root);
 extern double calculate_natural_log(double number);
@@ -25,10 +24,14 @@ double parse_input(const char* input) {
     } else if (strcasecmp(input, "e") == 0) {
         return get_e();
     }
-    
+
     double value;
-    scanf(input, "%lf", &value);
-    return value;
+    if (sscanf(input, "%lf", &value) == 1) {
+        return value;
+    }
+
+    printf("Invalid input. Please enter a number, 'pi', or 'e'.\n");
+    return 0.0;  // Default return for invalid input
 }
 
 int main() {
@@ -69,8 +72,7 @@ int main() {
                     result = divide_numbers(num1, num2);
                     break;
             }
-        }
-        else if (choice >= 5 && choice <= 12) {
+        } else if (choice >= 5 && choice <= 12) {
             if (choice == 10 || choice == 11) {  // Power or Nth Root
                 printf("Enter base (or number for Nth Root): ");
                 scanf("%s", input1);
