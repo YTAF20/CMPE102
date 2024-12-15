@@ -70,23 +70,23 @@ calculate_abs:
 //new
 calculate_power:
     //x0 = base, x1 = exponent
-    FMOV D0, X0       // Move base to D0
-    FMOV D1, X1       // Move exponent to D1
-    BL pow           
+    fmov d0, d0       // Move base to D0
+    fmov d1, d1       // Move exponent to D1
+    bl pow           
     ret
 
 //new
 calculate_nth_root:
     //x0 = number, x1 = root
-    FMOV D0, X0       // Move number to D0
-    FMOV D1, X1       // Move root to D1
-    FRECPE D1, D1     // Compute 1/root
-    BL pow            // Call pow(number, 1/root)
+    fmov d0, d0       // Move number to D0
+    fmov d1, d1       // Move root to D1
+    frecpe d1, d1     // Compute 1/root
+    bl pow            // Call pow(number, 1/root)
     ret
 
 //new
 calculate_natural_log:
     //x0 = number
-    FMOV D0, X0       // Move number to D0
-    BL log            
+    fmov d0, d0       // Move number to D0
+    bl log            
     ret
