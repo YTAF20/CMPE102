@@ -6,9 +6,6 @@ extern double add_numbers(double a, double b);
 extern double subtract_numbers(double a, double b);
 extern double multiply_numbers(double a, double b);
 extern double divide_numbers(double a, double b);
-extern double calculate_sine(double x);
-extern double calculate_cosine(double x);
-extern double calculate_tangent(double x);
 extern double calculate_sqrt(double x);
 extern double get_pi(void);
 extern double get_e(void);
@@ -33,8 +30,8 @@ int main() {
 
     printf("Scientific Calculator\n");
     printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
-    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n9. Absolute Value\n");
-    printf("Enter your choice (1-9): ");
+    printf("5. Square Root\n6. Absolute Value\n7. Sqaured \n8. Cubed\n");
+    printf("Enter your choice: ");
     scanf("%d", &choice);
     getchar();  // Consume newline
 
@@ -58,24 +55,23 @@ int main() {
             break;
         }
     }
-    else if (choice >= 5 && choice <= 9) {
+    else if (choice >= 5 && choice <= 8) {
         printf("Enter a number: ");
         scanf("%s", input1);
         
         num1 = parse_input(input1);
 
         switch (choice) {
-        case 5: result = calculate_sine(num1); break;
-        case 6: result = calculate_cosine(num1); break;
-        case 7: result = calculate_tangent(num1); break;
-        case 8:
+        case 6: result = calculate_abs(num1); break;
+        case 7: result = calculate_squared(num1); break;
+        case 5:
             if (num1 < 0) {
                 printf("Error: Square root of a negative number is not allowed.\n");
                 return 1;
             }
             result = calculate_sqrt(num1);
             break;
-        case 9: result = calculate_abs(num1); break;
+        case 8: result = calculate_cubed(num1); break;
         }
     }
     else {
