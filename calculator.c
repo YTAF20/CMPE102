@@ -17,6 +17,40 @@ extern double calculate_natural_log(double num);
 extern double calculate_nth_root(double base, double root);
 extern double calculate_power(double number, double exponent);
 
+void printdouble (double a)
+{
+    printf ("%lf\n", a);
+    return;
+}
+
+double get_double (double* a)
+{   
+    scanf (" %lf", a);
+    return *a;
+}
+
+
+double get_sin (double a)
+{   
+    double radians = a * (get_pi() / 180.0);
+    printf ("a =  %lf\n", a);
+    return (sin(radians));
+}
+
+double get_cos (double a)
+{   
+    double radians = a * (get_pi() / 180.0);
+    printf ("a =  %lf\n", a);
+    return (cos(radians));
+}
+
+double get_tan (double a)
+{   
+    double radians = a * (get_pi() / 180.0);
+    printf ("a =  %lf\n", a);
+    return (tan(radians));
+}
+
 double parse_input(const char* input) {
     if (strcasecmp(input, "pi") == 0) {
         return get_pi();
