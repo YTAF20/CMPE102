@@ -2,9 +2,6 @@
 .global subtract_numbers
 .global multiply_numbers
 .global divide_numbers
-.global calculate_sine
-.global calculate_cosine
-.global calculate_tangent
 .global calculate_sqrt
 .global get_pi
 .global get_e
@@ -37,18 +34,6 @@ divide_numbers:
 
 calculate_sqrt:
     fsqrt d0, d0   
-    ret
-
-calculate_sine:
-    bl sin
-    ret
-
-calculate_cosine:
-    bl cos
-    ret
-
-calculate_tangent:
-    bl tan
     ret
 
 get_pi:
