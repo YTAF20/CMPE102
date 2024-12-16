@@ -67,26 +67,15 @@ calculate_abs:
     fabs d0, d0
     ret
 
-//new
 calculate_power:
-    //x0 = base, x1 = exponent
-    fmov d0, d0       // Move base to D0
-    fmov d1, d1       // Move exponent to D1
-    bl pow           
+    bl pow            
     ret
 
-//new
 calculate_nth_root:
-    //x0 = number, x1 = root
-    fmov d0, d0       // Move number to D0
-    fmov d1, d1       // Move root to D1
-    frecpe d1, d1     // Compute 1/root
-    bl pow            // Call pow(number, 1/root)
+    fdiv d1, d1, d0   // Compute 1/root
+    bl pow            
     ret
 
-//new
 calculate_natural_log:
-    //x0 = number
-    fmov d0, d0       // Move number to D0
-    bl log            
+    bl log           
     ret
