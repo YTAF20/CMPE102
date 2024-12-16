@@ -70,7 +70,7 @@ int main() {
 
     printf("Scientific Calculator\n");
     printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
-    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n9. Absolute Value\n10. Nth Root\n11. Exponential\n12. Natural Log\n13. Log with custom base");
+    printf("5. Trig Functions\n6. Square Root\n7. Absolute Value\n8. Nth Root\n9. Exponential\n10. Natural Log\n11. Log with custom base");
     printf("Enter your choice: ");
     scanf("%d", &choice);
     getchar();  // Consume newline
