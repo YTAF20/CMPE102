@@ -16,6 +16,7 @@ extern double calculate_abs(double x);
 extern double calculate_natural_log(double num);
 extern double calculate_nth_root(double base, double root);
 extern double calculate_power(double number, double exponent);
+extern void main(void);
 
 void printdouble (double a)
 {
