@@ -36,7 +36,7 @@ int main() {
 
     printf("Scientific Calculator\n");
     printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
-    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n9. Absolute Value\n10. Nth Root\n11. Exponential\n12. Natural Log\n");
+    printf("5. Sine\n6. Cosine\n7. Tangent\n8. Square Root\n9. Absolute Value\n10. Nth Root\n11. Exponential\n12. Natural Log\n13. Log with custom base");
     printf("Enter your choice: ");
     scanf("%d", &choice);
     getchar();  // Consume newline
@@ -107,6 +107,37 @@ int main() {
         case 11: result = calculate_power(num1, num2); break;
         }
     }
+	else if (choice == 13) {
+		printf("Enter your number: ");
+		scnaf("%s", input1);
+		num1 = parse_input(input1);
+		
+		if (num1 <= 0) {
+			printf("Error: Logarithm is undefined for non-positive numbers.\n");
+			return 1;
+		}
+		
+		printf("Enter the logarithm base: ");
+		scnaf("%s", input2);
+		num2 = parse_input(input2);
+		
+		if (num2 < 0) {
+			printf("Error: Base cannot be a non-positive number.\n");
+			return 1;
+		}
+		
+		if (num2 == 0) {
+			result = 0;
+			break;
+		}
+		
+		double logTemp1, logTemp2;
+		logTemp1 = calculate_natural_log(num1);
+		logTemp2 = calculate_natural_log(num2);
+		
+		result = divide_numbers(logTemp1, logTemp2);
+		break;
+	}
     else {
         printf("Invalid choice.\n");
         return 1;
