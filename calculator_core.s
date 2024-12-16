@@ -12,6 +12,7 @@
 .global calculate_power
 .global calculate_nth_root
 .global calculate_natural_log
+.global main
 
 .data
 pi_value: .double 3.14159265359
@@ -79,3 +80,37 @@ calculate_nth_root:
 calculate_natural_log:
     bl log           
     ret
+
+main:
+        printStr "Please input a value in degrees :"
+        ldr x0, =theta
+        bl get_double
+        ldr x1, =theta
+        str d0, [x1]
+        
+        // Compute and print sine
+        bl get_sin
+        fmov d10, d0          // d10 = sin(theta)
+        bl printdouble
+        
+        printStr "cos: "
+        // Restore original input before cosine
+        ldr x1, =theta
+        ldr d0, [x1]
+        bl get_cos
+        fmov d10, d0          // d10 = cos(theta)
+        bl printdouble
+        
+        printStr "tan: "
+        // Restore original input before tangent
+        ldr x1, =theta
+        ldr d0, [x1]
+        bl get_tan
+        fmov d10, d0          // d10 = tan(theta)
+        bl printdouble
+
+.data
+u:      .fill 1, 8, 0
+theta:  .fill 1, 8, 0
+g:      .double 9.8
+t:      .fill 1, 8, 0
